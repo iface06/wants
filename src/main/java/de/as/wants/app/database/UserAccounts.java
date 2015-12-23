@@ -8,6 +8,7 @@ public class UserAccounts implements UserAccountDao {
     @Override
     public User findByEmailAddress(String emailaddress) {
         User user = new User();
+        user.setId("123444");
         user.setEmailAddress("musterman@as.local");
         user.setPassword("123456");
         user.setUsername("MaxMusty");

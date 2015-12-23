@@ -5,7 +5,9 @@ import java.util.UUID;
 
 public class UserSession implements Session {
 
-    private User user;
+    public static UserSession EMPTY = new UserSession(null);
+
+    private User user = User.EMPTY;
     private UUID sessionId;
 
     public UserSession(UUID sessionId) {

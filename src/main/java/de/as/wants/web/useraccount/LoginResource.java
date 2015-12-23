@@ -13,7 +13,7 @@ import org.restlet.resource.*;
 
 public class LoginResource extends ServerResource {
 
-    private UserSessionManager sessions;
+    private SessionManager<UserSession> sessions;
     private LoginInteractor interactor;
 
     public LoginResource() {
@@ -21,7 +21,7 @@ public class LoginResource extends ServerResource {
         interactor = new LoginInteractor();
     }
 
-    public LoginResource(UserSessionManager sessions, LoginInteractor interactor) {
+    public LoginResource(SessionManager<UserSession> sessions, LoginInteractor interactor) {
         this.sessions = sessions;
         this.interactor = interactor;
     }
@@ -29,7 +29,7 @@ public class LoginResource extends ServerResource {
     @Get
     public Representation login() {
         UserSession session = getSession();
-        if (session == null) {
+        if (Objects.equals(session, UserSession.EMPTY)) {
             return handleLogin();
         } else {
             return new JsonRepresentation(session.getUser());

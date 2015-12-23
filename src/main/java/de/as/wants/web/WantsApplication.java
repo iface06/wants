@@ -29,6 +29,7 @@ public class WantsApplication extends Application {
         router.attach("/view/{name}", ViewResource.class);
         router.attach("/login/{emailaddress}/{password}", LoginResource.class);
         router.attach("/logout", LogoutResource.class);
+        router.attach("/profile", GetUserAccountResource.class);
         Directory d = new Directory(getContext(), WEB_CONTENT);
         d.setListingAllowed(true);
         d.setDeeplyAccessible(true);

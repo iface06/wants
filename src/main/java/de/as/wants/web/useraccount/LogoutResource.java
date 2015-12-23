@@ -25,7 +25,7 @@ public class LogoutResource extends ServerResource {
             UserSession session = sessions.close(UUID.fromString(authhoken));
 
         }
-        getCookies().remove(Cookies.AUTH_TOKEN);
+        getCookies().set(Cookies.AUTH_TOKEN, "");
         getResponse().setStatus(org.restlet.data.Status.SUCCESS_OK);
     }
 
